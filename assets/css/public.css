@@ -25,28 +25,43 @@
             }
 
             td{
-
                 padding:5px;
                 text-align: center;
 
-                &:last-child{
-                    display:flex;
-                    flex-flow:row nowrap;
-                    column-gap: 10px;
+                &:first-child{
+                    width:80%;
                 }
-                .team-table__action{
-                    button{
-                        background-color: transparent;
-                        border:none;
-                        cursor:pointer;
-                        padding:0;
-                    }
-                    img{
-                        width:15px;
-                    }
-                }
+
             }
         }
 
+    }
+}
+
+.team-information{
+    border-collapse: collapse;
+    width:75%;
+    tbody{
+        tr{
+            td{
+                border:1px solid black;
+                padding:5px;
+
+                &:first-child{
+                    width:25%;
+                }
+
+                &:last-child{
+                    width:75%;
+                    font-weight: 700;
+                }
+
+
+            }
+
+            &:nth-child(even){
+                background-color: lightgray;
+            }
+        }
     }
 }

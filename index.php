@@ -32,5 +32,60 @@ if(empty($route[0])){
             }
             $controller->index();
             break;
+        case 'futbol':
+            $controller = new PublicController();
+            if(isset($route[1])){
+                $method = lcfirst(str_replace('-','',ucwords($route[1], '-')));
+                if(isset($route[2])){
+                    $controller->$method($route[2]);
+                }else{
+                    $controller->$method();
+                }
+                break;
+            }
+            $controller->futbol();
+            break;
+        case 'baloncesto':
+            $controller = new PublicController();
+            if(isset($route[1])){
+                $method = lcfirst(str_replace('-','',ucwords($route[1], '-')));
+                if(isset($route[2])){
+                    $controller->$method($route[2]);
+                }else{
+                    $controller->$method();
+                }
+                break;
+            }
+            $controller->baloncesto();
+            break;
+        case 'rugby':
+            $controller = new PublicController();
+            if(isset($route[1])){
+                $method = lcfirst(str_replace('-','',ucwords($route[1], '-')));
+                if(isset($route[2])){
+                    $controller->$method($route[2]);
+                }else{
+                    $controller->$method();
+                }
+                break;
+            }
+            $controller->rugby();
+            break;
+        case 'waterpolo':
+            $controller = new PublicController();
+            if(isset($route[1])){
+                $method = lcfirst(str_replace('-','',ucwords($route[1], '-')));
+                if(isset($route[2])){
+                    $controller->$method($route[2]);
+                }else{
+                    $controller->$method();
+                }
+                break;
+            }
+            $controller->waterpolo();
+            break;
+        default:
+            echo "404 - Recurso no encontrado";
+            break;
     }
 }

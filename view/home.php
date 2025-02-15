@@ -12,10 +12,13 @@
     <?php include 'layout/header.php'; ?>
     <main id="main" class="mx-auto">
         <h1 class="title uppercase text-center">Listado de disciplinas</h1>
+        <p class="text-center mt20">
+            Seleccione una de las categorías que verá a continuación para visualizar el listado de equipos correspondiente.
+        </p>
         <section class="sports-list">
             <div class="sports-list__inner">
                 <article class="sports-list__inner__item">
-                    <a href="" class="sports-list__inner__item__link">
+                    <a href="futbol" class="sports-list__inner__item__link">
                         <div class="sports-list__inner__item__link__img">
                             <img src="assets/img/futbol.jpg" alt="Fútbol">
                         </div>
@@ -25,7 +28,7 @@
                     </a>
                 </article>
                 <article class="sports-list__inner__item">
-                    <a href="" class="sports-list__inner__item__link">
+                    <a href="baloncesto" class="sports-list__inner__item__link">
                         <div class="sports-list__inner__item__link__img">
                             <img src="assets/img/baloncesto.jpg" alt="Baloncesto">
                         </div>
@@ -35,7 +38,7 @@
                     </a>
                 </article>
                 <article class="sports-list__inner__item">
-                    <a href="" class="sports-list__inner__item__link">
+                    <a href="rugby" class="sports-list__inner__item__link">
                         <div class="sports-list__inner__item__link__img">
                             <img src="assets/img/rugby.jpg" alt="Rugby">
                         </div>
@@ -45,7 +48,7 @@
                     </a>
                 </article>
                 <article class="sports-list__inner__item">
-                    <a href="" class="sports-list__inner__item__link">
+                    <a href="waterpolo" class="sports-list__inner__item__link">
                         <div class="sports-list__inner__item__link__img">
                             <img src="assets/img/waterpolo.jpg" alt="Waterpolo">
                         </div>

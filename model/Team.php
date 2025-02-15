@@ -21,25 +21,11 @@ class Team
 
     private string $table = 'team';
 
-    public function __construct()
+    public function __construct(?int $id = null)
     {
-
-    }
-
-    public function getById(int $id): void{
-        $db = DB::connect();
-        $query = "SELECT * FROM ".$this->table." WHERE id = :id";
-        $stmt = $db->prepare($query);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if($result){
-            $this->fillFromDb($result);
-        }else{
-            throw new \Exception("No se ha encontrado el equipo seleccionado en la base de datos.");
+        if(!is_null($id)) {
+            $this->getById($id);
         }
-
     }
 
     public function fill(array $params): void{
@@ -74,8 +60,18 @@ class Team
     }
 
     public function update(){
-
-
+        $db = DB::connect();
+        $query = "UPDATE ".$this->table." SET name = :name, sport = :sport, slug = :slug, city = :city, year_of_foundation = :year_of_foundation WHERE id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':sport', $this->sport);
+        $stmt->bindParam(':slug', $this->slug);
+        $stmt->bindParam(':city', $this->city);
+        $stmt->bindParam(':year_of_foundation', $this->yearOfFoundation);
+        if(!$stmt->execute()){
+            throw new \Exception("No se ha podido actualizar la información del equipo.");
+        }
     }
 
     public function delete(){
@@ -99,6 +95,52 @@ class Team
             $result[] = $team;
         }
         return $result;
+    }
+
+    public function getBySport(string $sport): array{
+        $db = DB::connect();
+        $query = "SELECT * FROM ".$this->table." WHERE sport = :sport ORDER BY created_at DESC";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':sport', $sport);
+        $stmt->execute();
+        $result = [];
+        foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $item){
+            $team = new Team();
+            $team->fillFromDb($item);
+            $result[] = $team;
+        }
+        return $result;
+    }
+
+    public function findBySlug(string $slug): void{
+        $db = DB::connect();
+        $query = "SELECT * FROM ".$this->table." WHERE slug = :slug";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':slug', $slug);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result){
+            $this->fillFromDb($result);
+        }else{
+            throw new \Exception("No se ha encontrado el equipo seleccionado en la base de datos.");
+        }
+    }
+
+    private function getById(int $id): void{
+        $db = DB::connect();
+        $query = "SELECT * FROM ".$this->table." WHERE id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result){
+            $this->fillFromDb($result);
+        }else{
+            throw new \Exception("No se ha encontrado el equipo seleccionado en la base de datos.");
+        }
+
     }
 
     private function fillFromDb(array $params): void{
@@ -181,7 +223,6 @@ class Team
 
     public function getYearOfFoundation(): string
     {
-        $this->yearOfFoundation = (new DateTime($this->yearOfFoundation))->format('d/m/Y');
         return $this->yearOfFoundation;
     }
 

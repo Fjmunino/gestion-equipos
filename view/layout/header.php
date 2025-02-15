@@ -10,7 +10,10 @@
                         <a href="<?php echo URL ?>" class="header__inner__right__navigation__menu__item__link">Home</a>
                     </li>
                     <li class="header__inner__right__navigation__menu__item">
-                        <a href="<?php echo URL ?>administration" class="header__inner__right__navigation__menu__item__link">Administración</a>
+                        <a href="<?php echo URL ?>administration" class="header__inner__right__navigation__menu__item__link">Listado equipos</a>
+                    </li>
+                    <li class="header__inner__right__navigation__menu__item">
+                        <a href="<?php echo URL ?>administration/create-team" class="header__inner__right__navigation__menu__item__link">Alta equipos</a>
                     </li>
                 </ul>
             </nav>

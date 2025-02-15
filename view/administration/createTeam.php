@@ -6,12 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Alta de equipo | Gestión Equipos | Francisco Javier Muñino Gil</title>
-    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="<?php echo BASE . "/assets/css/home.css"?>">
 </head>
 <body>
     <?php include __DIR__.'/../layout/header.php'; ?>
     <main id="main" class="mx-auto">
         <h1 class="title uppercase text-center">Alta de equipo</h1>
+
         <?php
             if(isset($errorValidation)){
                 ?>

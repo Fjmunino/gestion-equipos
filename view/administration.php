@@ -52,10 +52,10 @@
                                     <tr>
                                         <td><?php echo $team->getName(); ?></td>
                                         <td><?php echo $team->getCity(); ?></td>
-                                        <td><?php echo $team->getYearOfFoundation(); ?></td>
+                                        <td><?php echo (new DateTime($team->getYearOfFoundation()))->format('d/m/Y'); ?></td>
                                         <td><?php echo $team->getSport(); ?></td>
                                         <td>
-                                            <a href="" class="team-table__action"><img src="assets/img/editar.png" alt="Editar equipo"></a>
+                                            <a href="administration/edit-team/<?php echo $team->getId() ?>" class="team-table__action"><img src="assets/img/editar.png" alt="Editar equipo"></a>
                                             <form action="administration/delete-team/<?php echo $team->getId(); ?>" class="team-table__action delete-team" method="POST">
                                                 <input type="hidden" name="id" value="<?php echo $team->getId(); ?>">
                                                 <button class="team-table__action__button">
