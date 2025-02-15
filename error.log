@@ -1,0 +1,13 @@
+[15/02/2025 15:36:01]Error en la obtención de equipo. Datos del error: Cannot assign string to property Model\Team::$createdAt of type DateTime
+[15/02/2025 15:36:22]Cannot assign string to property Model\Team::$createdAt of type DateTime
+[15/02/2025 15:36:22]Error en la obtención de equipo.
+[15/02/2025 15:36:52]Cannot assign string to property Model\Team::$createdAt of type DateTime
+[15/02/2025 15:37:11]Cannot assign string to property Model\Team::$createdAt of type DateTime
+[15/02/2025 15:41:36]SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[15/02/2025 15:41:36]Error al dar de alta el equipo en la base de datos.
+[15/02/2025 15:43:34]SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[15/02/2025 15:43:34]Error al dar de alta el equipo en la base de datos.
+[15/02/2025 15:44:14]SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[15/02/2025 15:44:14]Error al dar de alta el equipo en la base de datos.
+[15/02/2025 15:44:45]SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[15/02/2025 15:44:45]Error al dar de alta el equipo en la base de datos.

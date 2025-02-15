@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /gestion-equipos/
+
+Options -Indexes
+
+RewriteRule ^(assets|controller|model)/ - [L]
+
+#RewriteRule ^(.*)$ index.php [QSA,L]
+
+RewriteRule ^([^/]+)/([^/]+)/([^/]+)$ index.php?controller=$1&action=$2&id=$3 [QSA,L]
+RewriteRule ^([^/]+)/([^/]+)$ index.php [QSA,L]
+RewriteRule ^(.*)$ index.php [QSA,L]
