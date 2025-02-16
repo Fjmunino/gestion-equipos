@@ -18,6 +18,8 @@ class Team
     private DateTime $createdAt;
     private string $slug;
 
+    private ?Player $captain = null;
+
     private string $table = 'team';
 
     public function __construct(?int $id = null)
@@ -139,6 +141,24 @@ class Team
             $result[] = $player;
         }
         return $result;
+    }
+
+    public function setCaptain(): void{
+        $db = DB::connect();
+        $query = "SELECT * FROM player WHERE team_id = :team_id AND captain = 1";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':team_id', $this->id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result) {
+            $player = new Player($result['id']);
+            $this->captain = $player;
+        }
+    }
+
+    public function getCaptain(){
+        return $this->captain;
     }
 
     private function getById(int $id): void{

@@ -40,6 +40,7 @@ class PublicController
     public function fichaEquipo(string $slug): void{
         $team = new Team();
         $team->findBySlug($slug);
+        $team->setCaptain();
         $sport = $team->getSport();
         $sport = Utility::eliminarAcentos(strtolower(str_replace(' ', '-', $sport)));
         include __DIR__ . "/../view/fichaEquipo.php";
