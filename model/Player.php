@@ -3,6 +3,7 @@
 namespace Models;
 
 use DateTime;
+use PDO;
 use PDOException;
 
 class Player
@@ -56,6 +57,32 @@ class Player
         }else{
             $this->captain = 0;
         }
+    }
+
+    public function delete(){
+        $db = DB::connect();
+        $query = "DELETE FROM ".$this->table." WHERE id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id', $this->id);
+        if(!$stmt->execute()){
+            throw new \Exception("No se ha podido eliminar el jugador seleccionado.");
+        }
+    }
+
+    private function getById(int $id): void{
+        $db = DB::connect();
+        $query = "SELECT * FROM ".$this->table." WHERE id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result){
+            $this->fillFromDb($result);
+        }else{
+            throw new \Exception("No se ha podido eliminar el jugador seleccionado.");
+        }
+
     }
 
     private function validate(array $params): void{

@@ -10,3 +10,5 @@
 [16/02/2025 11:20:02]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':team_id ORDER BY number ASC' at line 1
 [16/02/2025 11:20:05]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':team_id ORDER BY number ASC' at line 1
 [16/02/2025 11:20:06]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':team_id ORDER BY number ASC' at line 1
+[16/02/2025 11:52:25]No se ha encontrado el equipo seleccionado en la base de datos.
+[16/02/2025 11:52:54]No se ha encontrado el equipo seleccionado en la base de datos.

@@ -101,7 +101,15 @@
                                 <td><?php echo $player->getSurname() ?></td>
                                 <td><?php echo (new DateTime($player->getBirth()))->format('d/m/Y'); ?></td>
                                 <td class="mx-auto"><?php echo $player->getNumber() ?></td>
-                                <td>Editar eliminar</td>
+                                <td>
+                                    <a href="<?php echo BASE ?>/administration/edit-player/<?php echo $player->getId() ?>" class="team-table__action"><img src="<?php echo BASE ?>/assets/img/editar.png" alt="Editar jugador"></a>
+                                    <form action="<?php echo BASE ?>/administration/delete-player/<?php echo $player->getId(); ?>" class="team-table__action delete-team" method="POST">
+                                        <input type="hidden" name="id" value="<?php echo $player->getId(); ?>">
+                                        <button class="team-table__action__button">
+                                            <img src="<?php echo BASE ?>/assets/img/eliminar.png" alt="Eliminar jugador">
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
             <?php
                     }
@@ -113,6 +121,6 @@
         <a href="<?php echo $team->getId(); ?>/add-player" class="link-info mx-auto mt40">Añadir nuevo jugador</a>
     </main>
     <?php include  __DIR__.'/../layout/footer.php'; ?>
-    <script src="<?php echo BASE . "/assets/js/teamValidation.js"?>"></script>
+    <script src="<?php echo BASE . "/assets/js/administration.js"?>"></script>
 </body>
 </html>

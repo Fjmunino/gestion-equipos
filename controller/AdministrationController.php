@@ -145,5 +145,26 @@ class AdministrationController
         }
     }
 
+    public function deletePlayer(int $playerId){
+        if($_SERVER["REQUEST_METHOD"] !== "POST"){
+            header("Location: /gestion-equipos/administration/");
+            exit;
+        }
+        try{
+            $player = new Player($playerId);
+            $teamId = $player->getTeamId();
+            $player->delete();
+            $_SESSION['successMessage'] = "El jugador ha sido eliminado correctamente";
+            header("Location: /gestion-equipos/administration/edit-team/".$teamId);
+            exit;
+        }catch (\Exception $e){
+            $_SESSION['errorValidation'] = "No se ha podido eliminar el jugador selecionado.";
+            error_log("[".date('d/m/Y H:i:s') . "]" . $e->getMessage() ."\n", 3, __DIR__ . '/../error.log');
+            header("Location: /gestion-equipos/administration");
+            exit;
+        }
+
+    }
+
 
 }
