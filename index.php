@@ -24,7 +24,12 @@ if(empty($route[0])){
             if(isset($route[1])){
                 $method = lcfirst(str_replace('-','',ucwords($route[1], '-')));
                 if(isset($route[2])){
-                    $controller->$method($route[2]);
+                    if(isset($route[3])){
+                        $method = lcfirst(str_replace('-','',ucwords($route[3], '-')));
+                        $controller->$method($route[2]);
+                    }else{
+                        $controller->$method($route[2]);
+                    }
                 }else{
                     $controller->$method();
                 }

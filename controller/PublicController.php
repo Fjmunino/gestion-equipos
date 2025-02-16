@@ -2,7 +2,7 @@
 
 namespace Controller;
 use helper\Utility;
-use Model\Team;
+use Models\Team;
 
 include 'helper/utility.php';
 

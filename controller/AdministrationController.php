@@ -2,8 +2,7 @@
 
 namespace Controller;
 use DateTime;
-use exception\TeamNameValidationException;
-use Model\Team;
+use Models\Team;
 
 include "model/Team.php";
 class AdministrationController
@@ -114,6 +113,17 @@ class AdministrationController
         }
 
 
+    }
+
+    public function addPlayer(int $teamId){
+        try{
+            $team = new Team($teamId);
+            print_r($team);
+            include __DIR__.'/../view/administration/addPlayer.php';
+            exit;
+        }catch (\Exception $e){
+
+        }
     }
 
 

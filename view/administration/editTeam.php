@@ -81,6 +81,21 @@
             </div>
         </form>
 
+        <table class="team-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Dorsal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <a href="<?php echo $team->getId(); ?>/add-player" class="link-info mx-auto mt40">Añadir nuevo jugador</a>
     </main>
     <?php include  __DIR__.'/../layout/footer.php'; ?>
     <script src="<?php echo BASE . "/assets/js/teamValidation.js"?>"></script>

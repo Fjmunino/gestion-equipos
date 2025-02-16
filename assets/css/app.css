@@ -176,3 +176,22 @@ body{
     margin-top: 20px;
 }
 
+.mt40{
+    margin-top: 40px;
+}
+
+.link-info{
+    padding:5px 30px;
+    background-color: deepskyblue;
+    color:black;
+    text-transform: uppercase;
+    display: block;
+    width:fit-content;
+    text-decoration: none;
+    font-weight: 500;
+    transition:.2s background-color;
+
+    &:hover{
+        background-color: lightblue;
+    }
+}

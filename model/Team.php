@@ -1,9 +1,8 @@
 <?php
 
-namespace Model;
+namespace Models;
 
 use DateTime;
-use exception\TeamNameValidationException;
 use Models\DB;
 use PDO;
 use PDOException;
