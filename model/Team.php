@@ -155,29 +155,29 @@ class Team
     private function validate(array $params): void{
         $errors = [];
         if(empty($params['name'])){
-            $errors['name'] = 'El campo "nombre" no puede estar vacío.';
+            $errors['name'] = 'El campo nombre no puede estar vacío.';
         }
 
         if(empty($params['sport'])){
-            $errors['sport'] = 'Debe seleccionar una opción para el campo "deporte".';
+            $errors['sport'] = 'Debe seleccionar una opción para el campo deporte.';
         }
 
         if(empty($params['city'])){
-            $errors['city'] = 'El campo "ciudad" no puede estar vacío';
+            $errors['city'] = 'El campo ciudad no puede estar vacío';
         }
 
         if(empty($params['year_of_foundation'])){
-            $errors['year_of_foundation'] = 'El campo "fecha de fundación" no puede estar vacío';
+            $errors['year_of_foundation'] = 'El campo fecha de fundación no puede estar vacío';
         }else{
             $yearOfFoundation = new DateTime($params['year_of_foundation']);
             $currentDate = new DateTime();
             if($yearOfFoundation > $currentDate){
-                $errors['year_of_foundation'] = 'El campo "fecha de fundación" no puede ser superior a la fecha actual.';
+                $errors['year_of_foundation'] = 'El campo fecha de fundación no puede ser superior a la fecha actual.';
             }
         }
 
         if(!empty($errors)){
-            throw new \Exception(json_encode($errors));
+            throw new \Exception(serialize($errors));
         }
     }
 

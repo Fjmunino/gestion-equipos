@@ -28,10 +28,7 @@ class AdministrationController
 
     public function createTeam(){
         if(isset($_SESSION['errorValidation'])){
-            $errorValidation = json_decode($_SESSION['errorValidation']);
-            if(json_last_error() !== JSON_ERROR_NONE){
-                $errorValidation = $_SESSION['errorValidation'];
-            }
+            $errorValidation = unserialize($_SESSION['errorValidation']);
             unset($_SESSION['errorValidation']);
         }
         include __DIR__.'/../view/administration/createTeam.php';
@@ -62,7 +59,7 @@ class AdministrationController
         }
 
         if(isset($_SESSION['errorValidation'])){
-            $errorValidation = $_SESSION['errorValidation'];
+            $errorValidation = unserialize($_SESSION['errorValidation']);
             unset($_SESSION['errorValidation']);
         }
 

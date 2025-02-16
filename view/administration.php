@@ -78,16 +78,6 @@
     </main>
     <?php include 'layout/footer.php'; ?>
 
-    <script>
-        const options = document.querySelectorAll('.delete-team');
-        options.forEach(element => {
-            element.addEventListener('submit', function(e){
-                e.preventDefault();
-                if(confirm('¿Desea eliminar el equipo seleccionado? Esta acción será irreversible')){
-                    element.submit();
-                }
-            });
-        });
-    </script>
+    <script src="assets/js/administration.js"></script>
 </body>
 </html>
