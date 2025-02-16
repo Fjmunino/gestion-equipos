@@ -1,7 +1,10 @@
 <?php
 
 namespace Controller;
+use helper\Utility;
 use Model\Team;
+
+include 'helper/utility.php';
 
 class PublicController
 {
@@ -38,16 +41,7 @@ class PublicController
         $team = new Team();
         $team->findBySlug($slug);
         $sport = $team->getSport();
-        $sport = $this->eliminarAcentos(strtolower(str_replace(' ', '-', $sport)));
+        $sport = Utility::eliminarAcentos(strtolower(str_replace(' ', '-', $sport)));
         include __DIR__ . "/../view/fichaEquipo.php";
-    }
-
-    private function eliminarAcentos(string $cadena): string{
-        $cadena = str_replace('á', 'a', $cadena);
-        $cadena = str_replace('é', 'e', $cadena);
-        $cadena = str_replace('í', 'i', $cadena);
-        $cadena = str_replace('ó', 'o', $cadena);
-        $cadena = str_replace('ú', 'u', $cadena);
-        return $cadena;
     }
 }
