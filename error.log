@@ -14,3 +14,5 @@
 [16/02/2025 11:52:54]No se ha encontrado el equipo seleccionado en la base de datos.
 [16/02/2025 11:57:29]Failed to parse time string (23) at position 0 (2): Unexpected character
 [16/02/2025 11:57:32]Failed to parse time string (23) at position 0 (2): Unexpected character
+[16/02/2025 13:03:01]a:1:{s:4:"name";s:38:"El campo nombre no puede estar vacío.";}
+[16/02/2025 13:03:35]a:1:{s:4:"name";s:38:"El campo nombre no puede estar vacío.";}

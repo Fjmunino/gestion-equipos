@@ -36,7 +36,12 @@ class Player
             $stmt->bindParam(':birth', $this->birth);
             $stmt->bindParam(':captain', $this->captain);
             $stmt->bindParam(':number', $this->number);
+            if($this->captain){
+                $this->deactivateOtherCaptains();
+            }
+
             $stmt->execute();
+
 
         }catch (PDOException $e){
             error_log("[".date('d/m/Y H:i:s') . "]" . $e->getMessage() ."\n", 3, __DIR__ . '/../error.log');
@@ -55,6 +60,9 @@ class Player
         $stmt->bindParam(':captain', $this->captain);
         $stmt->bindParam(':birth', $this->birth);
         $stmt->bindParam(':number', $this->number);
+        if($this->captain){
+            $this->deactivateOtherCaptains();
+        }
         if(!$stmt->execute()){
             throw new \Exception("No se ha podido actualizar la información del jugador.");
         }
@@ -83,6 +91,17 @@ class Player
         $stmt->bindParam(':id', $this->id);
         if(!$stmt->execute()){
             throw new \Exception("No se ha podido eliminar el jugador seleccionado.");
+        }
+    }
+
+    private function deactivateOtherCaptains(){
+        $db = DB::connect();
+        $query = "UPDATE " . $this->table . " SET captain = 0 WHERE team_id = :team_id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':team_id', $this->team_id);
+        $stmt->execute();
+        if (!$stmt->execute()) {
+            throw new \Exception("Error al actualizar la información de los capitanes.");
         }
     }
 

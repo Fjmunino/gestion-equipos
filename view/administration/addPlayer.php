@@ -57,7 +57,7 @@
             <input type="date" name="birth" id="birth" required class="base-form__group__field">
             <small class="field-validation name-validation hidden">Debe seleccionar una fecha de nacimiento</small>
         </div>
-        <div class="base-form__group form-group-check">
+        <div class="form-group-check">
             <input type="checkbox" name="captain" id="captain" class="base-form__group__field">
             <label for="captain" class="base-form__group__label">Capitán del equipo</label>
             <small class="field-validation name-validation hidden">Debe seleccionar una fecha de nacimiento</small>
@@ -66,8 +66,10 @@
             <button class="save-button mx-auto" name="save">Guardar</button>
         </div>
     </form>
+    <a class="mx-auto d-block mt20" href="<?php echo BASE ?>/administration/edit-team/<?php echo $teamId; ?>">Volver a la ficha del equipo</a>
+
 </main>
 <?php include  __DIR__.'/../layout/footer.php'; ?>
-<!--<script src="--><?php //echo BASE . "/assets/js/teamValidation.js"?><!--"></script>-->
+<script src="<?php echo BASE . "/assets/js/playerValidation.js"?>"></script>
 </body>
 </html>
