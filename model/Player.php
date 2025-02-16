@@ -45,13 +45,30 @@ class Player
 
     }
 
+    public function update(){
+        $db = DB::connect();
+        $query = "UPDATE ".$this->table." SET name = :name, surname = :surname, captain = :captain, birth = :birth, number = :number WHERE id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id', $this->id);
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':surname', $this->surname);
+        $stmt->bindParam(':captain', $this->captain);
+        $stmt->bindParam(':birth', $this->birth);
+        $stmt->bindParam(':number', $this->number);
+        if(!$stmt->execute()){
+            throw new \Exception("No se ha podido actualizar la información del jugador.");
+        }
+    }
+
     public function fill(array $params): void{
         $this->validate($params);
         $this->name = $params['name'];
         $this->surname = $params['surname'];
         $this->birth = $params['birth'];
         $this->number = $params['number'];
-        $this->team_id = $params['team_id'];
+        if(isset($params['team_id'])){
+            $this->team_id = $params['team_id'];
+        }
         if(isset($params['captain'])){
             $this->captain = 1;
         }else{
@@ -69,7 +86,7 @@ class Player
         }
     }
 
-    private function getById(int $id): void{
+    public function getById(int $id): void{
         $db = DB::connect();
         $query = "SELECT * FROM ".$this->table." WHERE id = :id";
         $stmt = $db->prepare($query);

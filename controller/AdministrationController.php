@@ -145,6 +145,52 @@ class AdministrationController
         }
     }
 
+    public function editPlayer(int $id){
+        if(isset($_SESSION['successMessage'])){
+            $successMessage = $_SESSION['successMessage'];
+            unset($_SESSION['successMessage']);
+        }
+
+        if(isset($_SESSION['errorValidation'])){
+            $errorValidation = unserialize($_SESSION['errorValidation']);
+            unset($_SESSION['errorValidation']);
+        }
+
+        try{
+            $player = new Player();
+            $player->getById($id);
+            $team = new Team($player->getTeamId());
+            include __DIR__.'/../view/administration/editPlayer.php';
+        }catch (\Exception $e){
+            $_SESSION['errorValidation'] = "No se ha encontrado el jugador seleccionado.";
+            error_log("[".date('d/m/Y H:i:s') . "]" . $e->getMessage() ."\n", 3, __DIR__ . '/../error.log');
+            header("Location: /gestion-equipos/administration");
+            exit;
+        }
+    }
+
+    public function updatePlayer(int $id){
+        if($_SERVER["REQUEST_METHOD"] !== "POST"){
+            header("Location: /gestion-equipos/administration");
+        }
+        try{
+            $player = new Player($id);
+            if(is_null($player->getId())){
+                throw new \Exception("El jugador al que se intenta acceder no existe");
+            }
+            $player->fill($_POST);
+            $player->update();
+            $_SESSION['successMessage'] = "La información del jugador ha sido actualizada correctamente.";
+            header("Location: /gestion-equipos/administration/edit-player/".$id);
+            exit;
+        }catch (\Exception $e){
+            $_SESSION['errorValidation'] = $e->getMessage();
+            error_log("[".date('d/m/Y H:i:s') . "]" . $e->getMessage() ."\n", 3, __DIR__ . '/../error.log');
+            header("Location: /gestion-equipos/administration/edit-player/".$id);
+            exit;
+
+        }
+    }
     public function deletePlayer(int $playerId){
         if($_SERVER["REQUEST_METHOD"] !== "POST"){
             header("Location: /gestion-equipos/administration/");
