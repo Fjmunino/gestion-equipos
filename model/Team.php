@@ -126,6 +126,21 @@ class Team
         }
     }
 
+    public function getPlayers(): array{
+        $db = DB::connect();
+        $query = "SELECT * FROM player WHERE team_id = :team_id ORDER BY number ASC";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':team_id', $this->id);
+        $stmt->execute();
+        $result = [];
+        foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $item){
+            $player = new Player();
+            $player->fillFromDb($item);
+            $result[] = $player;
+        }
+        return $result;
+    }
+
     private function getById(int $id): void{
         $db = DB::connect();
         $query = "SELECT * FROM ".$this->table." WHERE id = :id";

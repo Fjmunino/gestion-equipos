@@ -11,7 +11,7 @@
 <body>
 <?php include __DIR__.'/../layout/header.php'; ?>
 <main id="main" class="mx-auto">
-    <h1 class="title uppercase text-center">Alta de jugador</h1>
+    <h1 class="title uppercase text-center">Alta de jugador en equipo <?php echo $team->getName(); ?></h1>
 
     <?php
     if(isset($errorValidation)){
@@ -36,6 +36,7 @@
     }
     ?>
     <form action="store-player/<?php echo $teamId; ?>" method="POST" class="base-form mx-auto">
+        <input type="hidden" name="team_id" value="<?php echo $team->getId(); ?>">
         <div class="base-form__group">
             <label for="name" class="base-form__group__label">Nombre</label>
             <input type="text" name="name" id="name" required class="base-form__group__field">

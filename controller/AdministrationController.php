@@ -3,8 +3,10 @@
 namespace Controller;
 use DateTime;
 use Models\Team;
+use Models\Player;
 
 include "model/Team.php";
+include "model/Player.php";
 class AdministrationController
 {
     public function index(){
@@ -65,6 +67,7 @@ class AdministrationController
         try{
             $team = new Team($id);
             $team->setYearOfFoundation((new DateTime($team->getYearOfFoundation()))->format('Y-m-d'));
+            $players = $team->getPlayers();
             include __DIR__.'/../view/administration/editTeam.php';
         }catch (\Exception $e){
             $_SESSION['errorValidation'] = "Error al recuperar la información del equipo seleccionado.";
@@ -118,11 +121,27 @@ class AdministrationController
     public function addPlayer(int $teamId){
         try{
             $team = new Team($teamId);
-            print_r($team);
             include __DIR__.'/../view/administration/addPlayer.php';
             exit;
         }catch (\Exception $e){
 
+        }
+    }
+
+    public function storePlayer(){
+        try{
+            $teamId = $_POST['team_id'];
+            $player = new Player();
+            $player->fill($_POST);
+            $player->insert();
+            $_SESSION['successMessage'] = "El jugador ha sido dado de alta correctamente";
+            header("Location: /gestion-equipos/administration/edit-team/".$teamId);
+            exit;
+        }catch (\Exception $e){
+            $_SESSION['errorValidation'] = $e->getMessage();
+            error_log("[".date('d/m/Y H:i:s') . "]" . $e->getMessage() ."\n", 3, __DIR__ . '/../error.log');
+            header("Location: /gestion-equipos/administration/edit-team/".$teamId);
+            exit;
         }
     }
 

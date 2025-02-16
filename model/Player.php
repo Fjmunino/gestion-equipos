@@ -2,17 +2,100 @@
 
 namespace Models;
 
-include "Team.php";
+use DateTime;
+use PDOException;
+
 class Player
 {
     private int $id;
-    private int|Team $team_id;
+    private int $team_id;
     private string $name;
     private string $surname;
     private string $number;
     private string $birth;
-    private string $captain;
+    private int $captain;
 
+    private string $table = 'player';
+
+    public function __construct(?int $id = null)
+    {
+        if(!is_null($id)) {
+            $this->getById($id);
+        }
+    }
+
+    public function insert(): void{
+        try {
+            $db = DB::connect();
+            $query = "INSERT INTO ".$this->table." (team_id, name, surname, birth, captain, number) VALUES (:team_id, :name, :surname, :birth, :captain, :number)";
+            $stmt = $db->prepare($query);
+            $stmt->bindParam(':team_id', $this->team_id);
+            $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':surname', $this->surname);
+            $stmt->bindParam(':birth', $this->birth);
+            $stmt->bindParam(':captain', $this->captain);
+            $stmt->bindParam(':number', $this->number);
+            $stmt->execute();
+
+        }catch (PDOException $e){
+            error_log("[".date('d/m/Y H:i:s') . "]" . $e->getMessage() ."\n", 3, __DIR__ . '/../error.log');
+            throw new \Exception("Error al dar de alta un jugador en la base de datos.");
+        }
+
+    }
+
+    public function fill(array $params): void{
+        $this->validate($params);
+        $this->name = $params['name'];
+        $this->surname = $params['surname'];
+        $this->birth = $params['birth'];
+        $this->number = $params['number'];
+        $this->team_id = $params['team_id'];
+        if(isset($params['captain'])){
+            $this->captain = 1;
+        }else{
+            $this->captain = 0;
+        }
+    }
+
+    private function validate(array $params): void{
+        $errors = [];
+        if(empty($params['name'])){
+            $errors['name'] = 'El campo nombre no puede estar vacío.';
+        }
+
+        if(empty($params['surname'])){
+            $errors['surname'] = 'El campo apellidos no puede estar vacío.';
+        }
+
+        if(empty($params['number'])){
+            $errors['number'] = 'El campo dorsal no puede estar vacío';
+        }
+
+        if(empty($params['birth'])){
+            $errors['birth'] = 'El campo fecha de fundación no puede estar vacío';
+        }else{
+            $yearOfFoundation = new DateTime($params['birth']);
+            $currentDate = new DateTime();
+            if($yearOfFoundation > $currentDate){
+                $errors['birth'] = 'El campo fecha de nacimiento no puede ser superior a la fecha actual.';
+            }
+        }
+
+        if(!empty($errors)){
+            throw new \Exception(serialize($errors));
+        }
+    }
+
+    public function fillFromDb(array $params): void{
+        $this->id = $params['id'];
+        $this->team_id = $params['team_id'];
+        $this->name = $params['name'];
+        $this->surname = $params['surname'];
+        $this->birth = $params['birth'];
+        $this->number = $params['number'];
+        $this->captain = $params['captain'];
+    }
 
     public function getId(): int
     {
@@ -24,12 +107,12 @@ class Player
         $this->id = $id;
     }
 
-    public function getTeamId(): Team|int
+    public function getTeamId(): int
     {
         return $this->team_id;
     }
 
-    public function setTeamId(Team|int $team_id): void
+    public function setTeamId(int $team_id): void
     {
         $this->team_id = $team_id;
     }

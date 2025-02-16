@@ -1,42 +1,12 @@
-[15/02/2025 15:36:01]Error en la obtención de equipo. Datos del error: Cannot assign string to property Model\Team::$createdAt of type DateTime
-[15/02/2025 15:36:22]Cannot assign string to property Model\Team::$createdAt of type DateTime
-[15/02/2025 15:36:22]Error en la obtención de equipo.
-[15/02/2025 15:36:52]Cannot assign string to property Model\Team::$createdAt of type DateTime
-[15/02/2025 15:37:11]Cannot assign string to property Model\Team::$createdAt of type DateTime
-[15/02/2025 15:41:36]SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
-[15/02/2025 15:41:36]Error al dar de alta el equipo en la base de datos.
-[15/02/2025 15:43:34]SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
-[15/02/2025 15:43:34]Error al dar de alta el equipo en la base de datos.
-[15/02/2025 15:44:14]SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
-[15/02/2025 15:44:14]Error al dar de alta el equipo en la base de datos.
-[15/02/2025 15:44:45]SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
-[15/02/2025 15:44:45]Error al dar de alta el equipo en la base de datos.
-[15/02/2025 22:21:38]No se ha encontrado el equipo seleccionado en la base de datos.
-[15/02/2025 22:21:38]No se ha encontrado el equipo seleccionado en la base de datos.
-[16/02/2025 09:19:44]{"name":"El campo \"nombre\" no puede estar vac\u00edo.","year_of_foundation":"El campo \"fecha de fundaci\u00f3n\" no puede estar vac\u00edo"}
-[16/02/2025 09:20:07]{"name":"El campo \"nombre\" no puede estar vac\u00edo.","year_of_foundation":"El campo \"fecha de fundaci\u00f3n\" no puede estar vac\u00edo"}
-[16/02/2025 09:36:22]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:37:04]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:37:12]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:37:34]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:38:09]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:38:18]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:38:28]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:38:52]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:39:25]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:39:34]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:39:57]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:40:31]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:40:37]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:41:06]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:41:43]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:42:16]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:48:16]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:49:26]{"name":"El campo \"nombre\" no puede estar vac\u00edo."}
-[16/02/2025 09:50:08]{"name":"El campo nombre no puede estar vac\u00edo."}
-[16/02/2025 09:51:44]{"name":"El campo nombre no puede estar vac\u00edo."}
-[16/02/2025 09:51:49]{"name":"El campo nombre no puede estar vac\u00edo."}
-[16/02/2025 09:52:40]{"name":"El campo nombre no puede estar vac\u00edo."}
-[16/02/2025 09:53:08]{"name":"El campo nombre no puede estar vac\u00edo."}
-[16/02/2025 09:53:21]{"name":"El campo nombre no puede estar vac\u00edo."}
-[16/02/2025 09:55:42]a:1:{s:4:"name";s:38:"El campo nombre no puede estar vacío.";}
+[16/02/2025 11:12:46]SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[16/02/2025 11:12:46]Error al dar de alta un jugador en la base de datos.
+[16/02/2025 11:14:43]SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[16/02/2025 11:15:41]SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[16/02/2025 11:15:41]Error al dar de alta un jugador en la base de datos.
+[16/02/2025 11:16:04]SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[16/02/2025 11:16:04]Error al dar de alta un jugador en la base de datos.
+[16/02/2025 11:16:36]SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[16/02/2025 11:16:36]Error al dar de alta un jugador en la base de datos.
+[16/02/2025 11:20:02]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':team_id ORDER BY number ASC' at line 1
+[16/02/2025 11:20:05]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':team_id ORDER BY number ASC' at line 1
+[16/02/2025 11:20:06]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':team_id ORDER BY number ASC' at line 1

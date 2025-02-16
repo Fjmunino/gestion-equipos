@@ -92,6 +92,21 @@
                 </tr>
             </thead>
             <tbody>
+            <?php
+                if(isset($players)){
+                    foreach($players as $player){
+                        ?>
+                            <tr>
+                                <td><?php echo $player->getName(); if($player->getCaptain()) echo " (Capitán)"; ?></td>
+                                <td><?php echo $player->getSurname() ?></td>
+                                <td><?php echo (new DateTime($player->getBirth()))->format('d/m/Y'); ?></td>
+                                <td class="mx-auto"><?php echo $player->getNumber() ?></td>
+                                <td>Editar eliminar</td>
+                            </tr>
+            <?php
+                    }
+                }
+            ?>
 
             </tbody>
         </table>
